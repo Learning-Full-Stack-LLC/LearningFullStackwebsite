@@ -18,7 +18,7 @@ export default class LessonsDAO{
     static async getLessons({
         filters = null,
         page = 0,
-        restaurontsPerPage = 20,
+        restaurantsPerPage: restaurantsPerPage = 20,
     } = {}){
         let query
         if (filters){
@@ -41,6 +41,17 @@ export default class LessonsDAO{
         }
 
         const displayCursor = cursor.limit(restaurantsPerPage).skip(restaurants * page)
+        try{
+            const restaurantsList = await displayCursor.toArray()
+            const totalNumRestaurants = page === 0 ? await restaurants.countDocument(query) : 0
+
+            return { restaurantsList, totalNumRestaurants }
+        }catch(e){
+            console.error(
+                `Unable to convert cursor ${e}`
+            )
+            return {restaurantsList: [], totalNumRestaurants: 0}
+        }
 
         
     }

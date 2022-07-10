@@ -1,4 +1,5 @@
 import app from "./server.js"
+import lessonsDAO from  "./dao/LessonsDAO"
 import mongodb from "mongodb"
 import dotenv from "dotenv"
 dotenv.config()
@@ -18,6 +19,7 @@ MongoClient.connect(
         process.exit(1)
     })
     .then(async client => {
+        await lessonsDAO.injectDB(client)
     app.listen(port, () => {
         ( `listening on port ${port}`)
     })
