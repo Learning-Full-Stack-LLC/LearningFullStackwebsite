@@ -1,4 +1,4 @@
-let lessons
+import router from "../api/lessons.routes.js"
 
 export default class LessonsDAO{
     static async injectDB(conn) {

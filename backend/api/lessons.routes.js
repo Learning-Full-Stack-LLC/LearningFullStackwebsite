@@ -1,8 +1,8 @@
 import express from "express"
-import LessonsCrtl from "../dao/LessonsDAO"
+import LessonsCrtl from "./lessons.controller.js"
 
 const router = express.Router()
 
-router.route("/").get(LessonsCrtl.apiGetLessons)
+router.route("api/lesson/").get(LessonsCrtl.apiGetLessons)
 
 export default router

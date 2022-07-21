@@ -21,7 +21,10 @@ export default class LessonsCrtl{
         let response = {
             restaurants: restaurantsList,
             page: page,
-            
+            filters: filters,
+            entries_per_page: restaurantsPerPage,
+            total_results: totalNumRestaurants,
         }
+        res.json(response)
     }
 }

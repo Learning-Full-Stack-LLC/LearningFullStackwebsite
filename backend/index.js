@@ -1,5 +1,5 @@
 import app from "./server.js"
-import lessonsDAO from  "./dao/LessonsDAO"
+import lessonsDAO from  "../dao/LessonsDAO.js"
 import mongodb from "mongodb"
 import dotenv from "dotenv"
 dotenv.config()
